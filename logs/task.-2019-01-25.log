@@ -1,0 +1,10 @@
+[2019-01-25T17:32:31.072] [ERROR] cheese - something wrong
+[2019-01-25T17:32:31.092] [INFO] cheese - 响应为0.027s
+[2019-01-25T17:32:34.687] [ERROR] cheese - something wrong
+[2019-01-25T17:32:34.688] [INFO] cheese - 响应为0.002s
+[2019-01-25T17:41:15.884] [ERROR] cheese - something wrong
+[2019-01-25T17:41:15.908] [INFO] cheese - 响应为0.031s
+[2019-01-25T17:45:23.032] [ERROR] cheese - {"method":"GET","url":"/","host":"localhost:3000","message":"something wrong","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"}
+[2019-01-25T17:45:23.054] [INFO] cheese - {"method":"GET","url":"/","host":"localhost:3000","message":{"responseTime":"响应为0.029s"},"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"}
+[2019-01-25T17:53:20.415] [ERROR] cheese - {"method":"GET","url":"/","host":"localhost:3000","message":"something wrong","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"}
+[2019-01-25T17:53:20.438] [INFO] cheese - {"method":"GET","url":"/","host":"localhost:3000","message":{"responseTime":"响应为0.031s"},"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"}
