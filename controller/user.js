@@ -1,14 +1,11 @@
 const xss = require('xss')
 const uuid = require('uuid')
-// const UserModel = require('../db/models/user')
-const mongoose = require('../db/index')
 const UserService = require('../service/user')
 
 module.exports = {
   // 查询用户
   pageListUser: async ctx => {
     let query = ctx.request.body
-    // let newId = mongoose.Types.ObjectId(_id)
     let data = await UserService.pageListUser(query)
     if (data) {
       ctx.body = {

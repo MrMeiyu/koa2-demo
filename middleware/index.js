@@ -1,8 +1,12 @@
 const path = require('path')
 const ip = require('ip')
-const bodyParser = require('koa-bodyparser')
+const koaBody = require('koa-body')
 const nunjucks = require('koa-nunjucks-2')
 const staticFiles = require('koa-static')
+const checkDirExist = require('../util/checkDirExist')
+const getUploadFileExt = require('../util/getUploadFileExt')
+const getUploadFileName = require('../util/getUploadFileName')
+const moment = require('moment')
 
 const miSend = require('./mi-send')
 const miLog = require('./mi-log')
@@ -50,7 +54,29 @@ module.exports = (app) => {
       trimBlocks: true
     }
   }));
-  app.use(bodyParser())
+  app.use(koaBody({
+    multipart: true, // 支持文件上传
+    encoding: 'utf-8',
+    formidable: {
+      uploadDir: path.join(__dirname, '../public/upload'), // 文件上传目录
+      keepExtensions: true, // 保持文件的后缀
+      maxFieldsSize: 2 * 1024 * 1024, // 文件上传的大小
+      onFileBegin: (name, file) => { // 文件上传的设置
+        const ext = getUploadFileExt(file.name)
+        const currentTime = moment().format('YYYY-MM-DD')
+        const dirName = getUploadFileName()
+        const dir = path.join(__dirname, `../public/upload/${currentTime}`)
+        const fileName = getUploadFileName(ext)
+        checkDirExist(dir)
+        file.path = `${dir}/${fileName}`
+        app.context.uploadpath = app.context.uploadpath ? app.context.uploadpath : {};
+        app.context.uploadpath[name] = `${dirName}/${fileName}`;
+      },
+      onError: (err) => {
+        console.error(`文件插件报错：${err}`)
+      }
+    },
+  }))
   app.use(miSend())
 
   // 增加错误的监听处理

@@ -19,6 +19,9 @@ module.exports = (app) => {
   router.post('/updateUser', app.controller.user.updateUser)
   router.get('/deleteUser/:id', app.controller.user.deleteUser)
 
+  /* 上传文件 */
+  router.post('/uploadFile', app.controller.file.uploadFile)
+
   app.use(router.routes())
       .use(router.allowedMethods())
 }
