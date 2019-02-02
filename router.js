@@ -14,7 +14,10 @@ module.exports = (app) => {
 
   /* 用户 */
   router.post('/userList', app.controller.user.pageListUser)
+  router.post('/findIdUser', app.controller.user.findIdUser)
   router.post('/addUser', app.controller.user.addUser) 
+  router.post('/updateUser', app.controller.user.updateUser)
+  router.get('/deleteUser/:id', app.controller.user.deleteUser)
 
   app.use(router.routes())
       .use(router.allowedMethods())
