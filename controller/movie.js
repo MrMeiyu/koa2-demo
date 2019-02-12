@@ -10,7 +10,8 @@ module.exports = {
         code: 200,
         success: true,
         message: '请求成功',
-        data,
+        data: data[0],
+        total: data.length ? data[1] : null
       }
     } else {
       ctx.body = {

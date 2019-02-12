@@ -26,7 +26,7 @@ module.exports = (app) => {
   router.get('/deleteUser/:id', app.controller.user.deleteUser)
 
   /* 电影爬虫数据 */
-  router.get('/movieList', app.controller.movie.pageListMovie)
+  router.post('/movieList', app.controller.movie.pageListMovie)
 
   /* 上传文件 */
   router.post('/uploadFile', app.controller.file.uploadFile)
