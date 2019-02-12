@@ -44,7 +44,7 @@ module.exports = (opts = {}) => {
       const filePath = folder ? Path.join(folder, `${fileName}.html`) : templatePath
 
       // 渲染对应错误类型的视图，并传入参数对象
-      try{
+      try {
         // 指定视图目录
         nunjucks.configure( folder ? folder : __dirname )
         const data = await nunjucks.render(filePath, {
@@ -56,7 +56,7 @@ module.exports = (opts = {}) => {
         // 赋值给响应体
         ctx.status = status
         ctx.body = data
-      }catch(e){
+      } catch (e) {
         // 如果中间件存在错误异常，直接抛出信息，由其他中间件处理
         ctx.throw(500, `错误页渲染失败:${e.message}`)
       }

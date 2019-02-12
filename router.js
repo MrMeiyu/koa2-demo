@@ -12,8 +12,14 @@ module.exports = (app) => {
   router.get('/user', app.controller.home.login)
   router.post('/user/register', app.controller.home.register)
 
+  /* 登陆 */
+  router.post('/login', app.controller.login.sedLogin)
+  
+  /* 注册 */
+  router.post('/register', app.controller.register.sedRegister)
+
   /* 用户 */
-  router.post('/userList', app.controller.user.pageListUser)
+  router.get('/userList', app.controller.user.pageListUser)
   router.post('/findIdUser', app.controller.user.findIdUser)
   router.post('/addUser', app.controller.user.addUser) 
   router.post('/updateUser', app.controller.user.updateUser)

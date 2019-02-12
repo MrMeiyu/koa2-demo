@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
 	phoneNumber: {
-    unique: true,
     type: String
   },
   areaCode: String,
@@ -27,7 +26,17 @@ const UserSchema = new Schema({
       type: Date,
       default: Date.now()
     }
-  }
+  },
+  userName: {
+    type: String,
+    unique: true,
+    required: true,
+    trim: true,
+  },
+  psd: {
+    type: String,
+    trim: true,
+  },
 })
 
 UserSchema.pre('save', (next) => {

@@ -11,8 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "ip": "^1.1.5",
+    "jsonwebtoken": "^8.4.0",
     "koa": "^2.6.2",
     "koa-body": "^4.0.7",
+    "koa-jwt": "^3.5.1",
     "koa-nunjucks-2": "^3.0.2",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",

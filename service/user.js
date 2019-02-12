@@ -28,7 +28,8 @@ module.exports = {
   addUser: params => {
     let user = new UserModel(params)
     return new Promise((resolve, reject) => {
-      user.save((err, result) => {
+      user.save((err) => {
+        console.log(err, 'err')
         if (err) {
           reject(false)
         } else {

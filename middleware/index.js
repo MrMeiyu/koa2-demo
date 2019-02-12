@@ -7,12 +7,19 @@ const checkDirExist = require('../util/checkDirExist')
 const getUploadFileExt = require('../util/getUploadFileExt')
 const getUploadFileName = require('../util/getUploadFileName')
 const moment = require('moment')
+const koaJwt = require('koa-jwt')
+const {
+  secret
+} = require('../util/const')
 
 const miSend = require('./mi-send')
 const miLog = require('./mi-log')
 const miHttpError = require('./mi-http-error')
+
 // 引入规则中件间
 const miRule = require('./mi-rule')
+
+// const getJWTPayload = require('../util/getJWTPayload')
 
 module.exports = (app) => {
   /**
@@ -37,6 +44,7 @@ module.exports = (app) => {
   app.use(miHttpError({
     errorPageFolder: path.resolve(__dirname, '../errorPage')
   }))
+
   app.use(miLog({
     env: app.env,  // koa 提供的环境变量
     projectName: 'koa-demo',
@@ -73,10 +81,40 @@ module.exports = (app) => {
         app.context.uploadpath[name] = `${dirName}/${fileName}`;
       },
       onError: (err) => {
-        console.error(`文件插件报错：${err}`)
+        ctx.throw(`文件插件报错：${err}`)
       }
     },
   }))
+
+  // 验证token错误
+  app.use((ctx, next) => {
+    return next().catch(err => {
+      if (err.status === 401) {
+        ctx.body = {
+          code: 401,
+          message: err.originalError ? err.originalError.message : err.message
+        }
+      } else {
+        throw err
+      }
+    })
+  })
+  
+  // 另外一种方法
+  // app.use(getJWTPayload)
+  
+  // 除了登陆和注册其他接口需要token验证
+  app.use(koaJwt(
+    {
+      secret,
+    },
+  ).unless({
+    path: [
+      /^\/api\/login/,
+      /^\/api\/register/,
+    ]
+  }))
+
   app.use(miSend())
 
   // 增加错误的监听处理
