@@ -14,7 +14,7 @@ module.exports = (app) => {
 
   /* 登陆 */
   router.post('/login', app.controller.login.sedLogin)
-  
+
   /* 注册 */
   router.post('/register', app.controller.register.sedRegister)
 
@@ -24,6 +24,9 @@ module.exports = (app) => {
   router.post('/addUser', app.controller.user.addUser) 
   router.post('/updateUser', app.controller.user.updateUser)
   router.get('/deleteUser/:id', app.controller.user.deleteUser)
+
+  /* 电影爬虫数据 */
+  router.get('/movieList', app.controller.movie.pageListMovie)
 
   /* 上传文件 */
   router.post('/uploadFile', app.controller.file.uploadFile)
