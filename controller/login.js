@@ -16,8 +16,9 @@ module.exports = {
         code: 200,
         success: true,
         message: '登陆成功',
-        data: userInfo,
-        token,
+        data: Object.assign({}, userInfo._doc, {
+          token
+        })
       }
     } else {
       ctx.body = {
