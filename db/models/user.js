@@ -27,16 +27,38 @@ const UserSchema = new Schema({
       default: Date.now()
     }
   },
+  // 用户名
   userName: {
     type: String,
     unique: true,
     required: true,
     trim: true,
   },
+  // 密码
   psd: {
     type: String,
     trim: true,
   },
+  // 权限树
+  permissionTree: {
+    type: Array,
+    default: []
+  },
+  // 地址
+  address: {
+    type: Array,
+    default: []
+  },
+  // 学历
+  education: {
+    type: Number,
+    default: 0
+  },
+  // 性别
+  rex: {
+    type: Number,
+    default: 0
+  }
 })
 
 UserSchema.pre('save', (next) => {
