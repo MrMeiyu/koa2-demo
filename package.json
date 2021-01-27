@@ -18,6 +18,9 @@
     "koa-static": "^5.0.0",
     "log4js": "^4.0.0",
     "mongoose": "^5.4.7",
-    "nunjucks": "^3.1.7"
+    "nodemon": "^1.18.9",
+    "nunjucks": "^3.1.7",
+    "uuid": "^3.3.2",
+    "xss": "^1.0.3"
   }
 }

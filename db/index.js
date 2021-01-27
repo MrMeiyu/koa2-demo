@@ -4,6 +4,7 @@ const DB_URL = 'mongodb://localhost/test'
 
 const Options = {
   useNewUrlParser: true,
+  useCreateIndex: true,
 }
 
 mongoose.connect(DB_URL, Options).then(() => {
